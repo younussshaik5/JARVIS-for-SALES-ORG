@@ -9,7 +9,7 @@
 
 ## Executive Summary
 
-JARVIS is an autonomous AI employee system that continuously learns from OpenCode conversations, monitors file systems, and auto-generates sales engineering artifacts per account/opportunity. It operates in real-time (< 1 min latency) across the entire workspace, regardless of which subfolder you're working in.
+JARVIS is an autonomous AI employee system that continuously learns from OpenCode and Claude conversations, monitors file systems, and auto-generates sales engineering artifacts per account/opportunity. It operates in real-time (< 1 min latency) across the entire workspace, regardless of which subfolder you're working in.
 
 ### Core Capabilities
 

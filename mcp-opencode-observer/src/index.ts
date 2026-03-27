@@ -1,5 +1,5 @@
-// MCP OpenCode Observer - Standalone stdio server
-import { OpenCodeDB } from './db.js';
+// MCP Conversation Observer (OpenCode & Claude) - Standalone stdio server
+import { ConversationDB } from './db.js';
 import { createServer as createHttpServer } from 'http';
 import { readFileSync, existsSync, unlinkSync } from 'fs';
 import { join } from 'path';
@@ -25,7 +25,7 @@ try {
 }
 
 // Initialize database
-const db = new OpenCodeDB(config.opencode.dbPath);
+const db = new ConversationDB(config.opencode.dbPath);
 
 // ============ Start Autonomous Observer ============
 startAutonomy(db);
@@ -55,7 +55,7 @@ httpServer.listen(config.observer.port || 3000, () => {
 });
 
 console.error('[Observer] MCP stdio server started');
-console.error('[Observer] Monitoring:', config.opencode.dbPath);
+console.error('[Observer] Monitoring conversations in:', config.opencode.dbPath);
 
 // ============ MCP STDIO SERVER ============
 
@@ -87,7 +87,7 @@ async function handleRequest(req: any) {
         result = {
           protocolVersion: '2024-11-05',
           capabilities: { tools: {} },
-          serverInfo: { name: 'opencode-observer', version: '1.0.0' }
+          serverInfo: { name: 'conversation-observer', version: '1.0.0' }
         };
         break;
 
@@ -101,7 +101,7 @@ async function handleRequest(req: any) {
             },
             {
               name: 'get_recent_sessions',
-              description: 'Get recent OpenCode sessions',
+              description: 'Get recent OpenCode and Claude sessions',
               inputSchema: { type: 'object', properties: { limit: { type: 'number', default: 10 } } }
             },
             {

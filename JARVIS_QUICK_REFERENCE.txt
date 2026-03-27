@@ -21,7 +21,7 @@ JARVIS is triggered by any change in your workspace:
 
 Key Capabilities:
 1. MCP Integration
-   → Polls OpenCode conversations every 60 seconds
+   → Polls OpenCode and Claude conversations every 60 seconds
 2. File System Monitoring
    → Instant trigger when `notes.json` or `deals/` change
 3. Modular Skill Execution

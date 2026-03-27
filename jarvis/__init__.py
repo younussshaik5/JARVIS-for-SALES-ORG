@@ -1,4 +1,4 @@
-"""JARVIS - Autonomous AI Employee for OpenCode."""
+"""JARVIS - Autonomous AI Employee for OpenCode and Claude."""
 
 __version__ = "2.0.0"
 __author__ = "your_username"

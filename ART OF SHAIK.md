@@ -42,7 +42,7 @@ You don't need to file things. JARVIS automatically:
 
 ### 3. Workspace Isolation
 
-JARVIS only learns from **this workspace**. Use OpenCode for other projects—those conversations stay separate. Each workspace can have its own JARVIS instance with independent memory.
+JARVIS only learns from **this workspace**. Use OpenCode or Claude for other projects—those conversations stay separate. Each workspace can have its own JARVIS instance with independent memory.
 
 ### 4. Continuous Improvement
 

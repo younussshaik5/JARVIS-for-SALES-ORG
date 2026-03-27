@@ -44,7 +44,7 @@ class ConversationLearner:
         # Subscribe to all relevant events
         self.event_bus.subscribe("telegram.message", self._handle_telegram_message)
         self.event_bus.subscribe("telegram.response", self._handle_telegram_response)
-        self.event_bus.subscribe("conversation.message", self._handle_opencode_conversation)
+        self.event_bus.subscribe("conversation.message", self._handle_conversation)
         self.event_bus.subscribe("modification.approved", self._handle_approval)
         self.event_bus.subscribe("modification.rejected", self._handle_rejection)
         self.event_bus.subscribe("scan.completed", self._handle_scan_completed)
@@ -95,10 +95,10 @@ class ConversationLearner:
         self._add_experience(experience)
 
     async def _handle_opencode_conversation(self, event: Event):
-        """Process OpenCode conversation message (from ConversationObserver)."""
+        """Process OpenCode and Claude conversation message (from ConversationObserver)."""
         data = event.data
         experience = {
-            "type": "opencode_conversation",
+            "type": "conversation",
             "timestamp": datetime.now().isoformat(),
             "message_id": data.get("message_id"),
             "session_id": data.get("session_id"),

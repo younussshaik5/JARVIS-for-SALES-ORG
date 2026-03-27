@@ -48,7 +48,7 @@ llm:
 ```
 
 This starts:
-- MCP Observer (Node.js) – polls OpenCode conversations
+- MCP Observer (Node.js) – polls OpenCode and Claude conversations
 - JARVIS Core (Python) – orchestrator + all skills
 - UI Dashboard – http://localhost:8080
 

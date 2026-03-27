@@ -7,7 +7,7 @@
 ```
 
 That's it! Three components start automatically:
-- ✅ **MCP Observer** (Node.js) – Monitors OpenCode conversations
+- ✅ **MCP Observer** (Node.js) – Monitors OpenCode and Claude conversations
 - ✅ **JARVIS Core** (Python) – Orchestrator + all Skills
 - ✅ **UI Dashboard** – http://localhost:8080
 
@@ -76,7 +76,7 @@ When you run `./fireup_jarvis.sh`, you'll see:
 ### Event-Driven Intelligence
 JARVIS doesn't run on schedules — it reacts to **events**:
 
-- OpenCode Conversation → MCP Observer → Event Bus → Skills → New/Updated Document
+- OpenCode/Claude Conversation → MCP Observer → Event Bus → Skills → New/Updated Document
 - Manual File Edit → FS Observer → Event Bus → Skills → Refreshed Document
 
 ## Stopping JARVIS

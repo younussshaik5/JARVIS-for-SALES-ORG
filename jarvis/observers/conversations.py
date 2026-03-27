@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Conversation Observer - monitors OpenCode conversations via DB polling."""
+"""Conversation Observer - monitors OpenCode and Claude conversations via DB polling."""
 
 import asyncio
 import sqlite3
@@ -11,7 +11,7 @@ from jarvis.utils.event_bus import EventBus, Event
 
 
 class ConversationObserver:
-    """Polls OpenCode database for new conversation messages."""
+    """Polls OpenCode and Claude database for new conversation messages."""
 
     def __init__(self, config, event_bus: EventBus):
         self.config = config

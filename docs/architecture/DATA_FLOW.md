@@ -6,7 +6,7 @@ This document describes how information moves through the JARVIS system, from ex
 
 ```mermaid
 graph TD
-    A[OpenCode Conversations] -->|Websocket/Polling| B[MCP Observer Node.js]
+    A[OpenCode and Claude Conversations] -->|Websocket/Polling| B[MCP Observer Node.js]
     C[Local Account Files] -->|Watchdog| D[FS Observer Python]
     
     B -->|Event| E[JARVIS Event Bus]

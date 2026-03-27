@@ -1,6 +1,6 @@
 # MCP OpenCode Observer
 
-Autonomous MCP server that observes OpenCode conversations in real-time, providing tools to query chat history, sessions, and tool outputs.
+Autonomous MCP server that observes OpenCode and Claude conversations in real-time, providing tools to query chat history, sessions, and tool outputs.
 
 ## Features
 

@@ -2,7 +2,7 @@
 
 ## What Is This?
 
-An autonomous MCP server that runs alongside OpenCode, continuously observing your conversations and updating memory files, persona context, and organizing sessions by date. First 50 changes require approval; after that it's fully autonomous.
+An autonomous MCP server that runs alongside OpenCode, continuously observing your OpenCode and Claude conversations and updating memory files, persona context, and organizing sessions by date. First 50 changes require approval; after that it's fully autonomous.
 
 ## Prerequisites
 

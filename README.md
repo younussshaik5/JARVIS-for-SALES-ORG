@@ -62,7 +62,7 @@ All files feature **Owner: SE YOUR_NAME** and real-time syncing.
 ```
 
 **Components launched:**
-- **MCP Observer (Node.js)** – Monitors OpenCode conversations
+- **MCP Observer (Node.js)** – Monitors OpenCode and Claude conversations
 - **JARVIS Core (Python)** – The "Brain" (Orchestrator + Skills)
 - **UI Dashboard** – http://localhost:8080
 

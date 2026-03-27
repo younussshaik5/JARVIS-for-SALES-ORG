@@ -1,7 +1,7 @@
 import { readFileSync, writeFileSync, existsSync, mkdirSync, readdirSync, copyFileSync, unlinkSync } from 'fs';
 import { join, dirname, basename } from 'path';
 import yaml from 'js-yaml';
-import { OpenCodeDB } from './db.js';
+import { ConversationDB } from './db.js';
 
 // ============== Configuration ==============
 
@@ -180,7 +180,7 @@ export function switchPersona(persona: string, reason: string, ruleId?: string):
   if (current === persona) return true;
   
   if (rulesConfig.approval_mode && changeCount < rulesConfig.max_approvals_before_autonomous) {
-    console.log(`[Autonomy] Approval needed: switch ${current} → ${persona} (${reason})`);
+    console.log(`[Autonomy] Approval needed: switch ${current} → ${persona} (${reason}) - conversation event`);
     changeCount++;
   }
   
@@ -358,7 +358,7 @@ export function extractInsights(message: string): any {
 // ============== Main Polling Loop ==============
 
 let lastSeen = Date.now();
-let dbInstance: OpenCodeDB | null = null;
+let dbInstance: ConversationDB | null = null;
 
 export function startAutonomy(db: any): void {
   dbInstance = db;
@@ -378,7 +378,7 @@ export function startAutonomy(db: any): void {
     } catch {}
   }, 60000);
   
-  console.error('[Autonomy] Started (polling every 60s, approval threshold:', rulesConfig.max_approvals_before_autonomous, ')');
+  console.error('[Autonomy] Started monitoring OpenCode and Claude conversations (polling every 60s, approval threshold:', rulesConfig.max_approvals_before_autonomous, ')');
 }
 
 async function pollMessages(): Promise<void> {

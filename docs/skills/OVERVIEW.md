@@ -29,7 +29,7 @@ JARVIS is built on a modular "Skill" architecture. Each skill is a specialized P
 ### 5. Stakeholder Analysis (`stakeholder_analysis.py`)
 - **Function**: Maps out the political and technical landscape of an account.
 - **Output**: `meddpicc/stakeholder_analysis.md`
-- **Data**: Pulls from LinkedIn research and OpenCode conversations.
+- **Data**: Pulls from LinkedIn research and OpenCode and Claude conversations.
 
 ### 6. Demo Strategy (`demo_strategy.py`)
 - **Function**: Recommends a tailored demo flow based on discovery.

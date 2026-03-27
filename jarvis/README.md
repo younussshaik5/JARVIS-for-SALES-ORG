@@ -27,7 +27,7 @@ jarvis/
 │   └── account_initialization.py
 ├── observers/
 │   ├── file_system_observer.py  # Watchdog-based FS monitoring
-│   └── conversation_observer.py # OpenCode conversation polling
+│   └── conversation_observer.py # OpenCode and Claude conversation polling
 ├── utils/
 │   ├── event_bus.py             # Async pub/sub messaging
 │   ├── data_aggregator.py       # Cross-skill context gathering

@@ -3,7 +3,7 @@ import { readFileSync, existsSync, watch, statSync, readdirSync } from 'fs';
 import { join, basename } from 'path';
 import { EventEmitter } from 'events';
 
-export interface OpenCodeSession {
+export interface ConversationSession {
   id: string;
   project_id: string;
   parent_id: string | null;
@@ -25,7 +25,7 @@ export interface OpenCodeSession {
   workspace_id: string;
 }
 
-export interface OpenCodeMessage {
+export interface ConversationMessage {
   id: string;
   session_id: string;
   time_created: number;
@@ -44,7 +44,7 @@ export interface OpenCodeMessage {
   };
 }
 
-export class OpenCodeDB extends EventEmitter {
+export class ConversationDB extends EventEmitter {
   private db: Database.Database;
 
   constructor(dbPath: string) {
@@ -133,7 +133,7 @@ export class OpenCodeDB extends EventEmitter {
     }));
   }
 
-  async searchMessages(query: string, limit: number = 20): Promise<OpenCodeMessage[]> {
+  async searchMessages(query: string, limit: number = 20): Promise<ConversationMessage[]> {
     // Get recent messages to search (limit scope for performance)
     const recent = await this.getRecentMessages(1000);
 
@@ -162,7 +162,7 @@ export class OpenCodeDB extends EventEmitter {
     return existsSync(filePath) ? readFileSync(filePath, 'utf-8') : null;
   }
 
-  startPolling(intervalMs: number, callback: (messages: OpenCodeMessage[]) => void, workspaceRoot?: string): void {
+  startPolling(intervalMs: number, callback: (messages: ConversationMessage[]) => void, workspaceRoot?: string): void {
     let lastPoll = Date.now();
 
     setInterval(async () => {

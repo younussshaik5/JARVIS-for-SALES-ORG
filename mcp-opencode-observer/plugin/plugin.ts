@@ -8,7 +8,7 @@ import { z } from 'zod';
 export default Plugin({
   name: 'opencode-observer',
   version: '1.0.0',
-  description: 'Query OpenCode sessions and conversations',
+  description: 'Query OpenCode and Claude sessions and conversations',
 
   async onInstall() {
     console.log('[Observer Plugin] Installed');

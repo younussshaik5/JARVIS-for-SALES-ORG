@@ -48,7 +48,7 @@ Edit `jarvis/config/jarvis.yaml` with:
 ```
 
 This starts three services:
-- **MCP Observer** (Node.js) – Polls OpenCode conversations
+- **MCP Observer** (Node.js) – Polls OpenCode and Claude conversations
 - **JARVIS Core** (Python) – Orchestrator + Skills engine
 - **UI Dashboard** – Available at http://localhost:8080
 
@@ -64,7 +64,7 @@ Add a `notes.json` with initial facts and knowledge gaps. JARVIS will auto-gener
 ## 📊 How It Works
 
 ```
-OpenCode Conversations ──→ MCP Observer ──→ Event Bus
+OpenCode and Claude Conversations ──→ MCP Observer ──→ Event Bus
 Local File Changes ──────→ FS Observer  ──→ Event Bus
                                                │
                                          Orchestrator

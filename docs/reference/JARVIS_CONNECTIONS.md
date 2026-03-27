@@ -391,7 +391,7 @@ Restore:
 |-----------|-------|--------|---------------|-----------|
 | Orchestrator | config | status events | all component.health | system.started, component.registered |
 | FileSystemObserver | filesystem | event logs | (watchdog) | file.created/modified/deleted/moved |
-| ConversationObserver | OpenCode DB | event logs | poll loop | conversation.message |
+| ConversationObserver | OpenCode/Claude DB | event logs | poll loop | conversation.message |
 | PatternRecognition | patterns file | patterns file | file.*, conversation.* | pattern.discovered, preference.updated |
 | PersonaManager | personas.json, history DB | personas.json, history DB | workspace.scanned | persona.switched, deal.created |
 | SafetyGuard | trust scores | approval queue | modification.requested | modification.approved/blocked, approval.required |
