@@ -6,6 +6,98 @@
 > **Welcome to the JARVIS Open-Source Template!**  
 > This is a fully functional, self-evolving AI assistant designed specifically for Presales, Solution Engineers, and Account Executives. Fork this repository to run your own autonomous employee locally.
 
+## 🗺️ Project Architecture: Why, What, and How
+
+### The "Why": Solving the Presales Documentation Gap
+Presales and Solution Engineers spend 30-40% of their time on tedious administrative tasks: summarizing meeting notes, drafting discovery docs, and filling out risk assessments. **JARVIS** was built to automate this by observing your real-world conversations and turning them into professional, high-impact business artifacts.
+
+### The "What": High-Level System Design
+JARVIS is a multi-layered autonomous system that bridges your AI chat environments with a professional documentation suite.
+
+```mermaid
+graph TD
+    subgraph "Chat Environments"
+        OC[OpenCode Chat]
+        CC[ClaudeCode Chat]
+    end
+
+    subgraph "MCP Observer (Node.js)"
+        DB1[(OpenCode SQLite)]
+        DB2[(Claude SQLite)]
+        OBS[Observer Service]
+        WS[WebSocket Server]
+    end
+
+    subgraph "JARVIS Core (Python)"
+        ORCH[Orchestrator]
+        BUS[Event Bus]
+        MEM[(Memory System)]
+        LLM[LLM Synthesis]
+    end
+
+    subgraph "Outputs"
+        DOCS[Markdown Reports]
+        DASH[Interactive Dashboard]
+    end
+
+    OC --> DB1
+    CC --> DB2
+    DB1 -- Polling --> OBS
+    DB2 -- Polling --> OBS
+    OBS -- Stream --> WS
+    WS -- Data --> ORCH
+    ORCH -- Broadcast --> BUS
+    BUS -- Trigger --> SKILLS
+    SKILLS -- Context --> LLM
+    LLM -- MD Content --> SKILLS
+    SKILLS -- Write --> DOCS
+    SKILLS -- Update --> DASH
+```
+
+### The "How": Detailed Component Breakdown
+
+#### 1. The Real-Time Observer Loop
+The **MCP Observer** is the "eyes" of the system. It monitors your local conversation history without needing access to any cloud platform, ensuring your data stays private.
+
+```mermaid
+sequenceDiagram
+    participant SQLite as Claude/OpenCode DB
+    participant Obs as MCP Observer (Node.js)
+    participant Core as JARVIS Core (Python)
+    
+    loop Every 60 Seconds
+        Obs->>SQLite: Query NEW sessions & messages
+        SQLite-->>Obs: Return raw JSON rows
+        Note over Obs: Filter by workspace_root
+        Obs->>Core: WebSocket push (New Message)
+    end
+```
+
+#### 2. The Skill Pipeline: Turning Chat into Strategy
+When the Core receives a message, it doesn't just "summarize"—it uses specialized **Skills** to synthesize the data into different business lens (e.g., Risk, Discovery, MEDDPICC).
+
+```mermaid
+flowchart LR
+    Msg[New Chat Message] --> Bus[Event Bus]
+    Bus --> S1[Risk Assessment Skill]
+    Bus --> S2[Discovery Skill]
+    Bus --> S3[ROI Model Skill]
+    
+    S1 --> LLM{LLM Synthesis}
+    S2 --> LLM
+    S3 --> LLM
+    
+    LLM --> R1[TECHNICAL_RISK_ASSESSMENT.md]
+    LLM --> R2[discovery/internal_discovery.md]
+    LLM --> R3[value_architecture/roi_model.md]
+```
+
+#### 3. Persistent Memory & Account Isolation
+JARVIS organizes its knowledge using a structured directory system. Each account you specify has its own sandbox where documents are created and updated.
+
+- **MEMORY/**: Stores global competitor data, common product patterns, and long-term user preferences.
+- **ACCOUNTS/**: Contains the per-deal intelligence suite.
+
 ---
 
 ## 🚀 Quick Start: Post-Fork Setup
@@ -49,17 +141,6 @@ JARVIS acts as your autonomous double. Whatever you chat about in **ClaudeCode**
 - **📝 Autonomous Document Generation** – Automatically creates and updates Technical Risk Assessments, Deep Discovery docs, MEDDPICC reports, ROI models, and Demo Strategies.
 - **🎭 Multi-Persona Intelligence** – Detects if your conversation is deal-focused (AE) or technical (SC) and adjusts its output focus.
 - **📊 Interactive Dashboards** – Aggregates all insights into a premium HTML interface with one-click exports to PDF, Word, and Excel.
-
----
-
-## ⚙️ How It Works: Under the Hood
-
-1. **Pulse (Polling)**: The **MCP Observer** (in `mcp-opencode-observer/`) continuously monitors local SQLite databases for new Claude/OpenCode messages.
-2. **Bridge**: New messages are streamed via WebSocket to the **JARVIS Core** (Python).
-3. **Event Bus**: The Python Orchestrator broadcasts events to triggered **Skills** (Risk, Discovery, etc.).
-4. **LLM Synthesis**: Skills send chat context to your **LLM** (GPT-4o, Claude 3.5, etc.) to extract concrete business facts.
-5. **File Sync**: Specialized markdown reports are written directly into your `ACCOUNTS/` folder.
-6. **Showcase**: The **Dashboard Skill** regenerates the `DASHBOARD.html` with the latest insights.
 
 ---
 
