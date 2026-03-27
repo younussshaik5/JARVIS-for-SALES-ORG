@@ -46,9 +46,9 @@ llm:
   extra_body: null
   stream: false
 
-# Use OpenCode's AI configuration instead of local LLM config
+# Use OpenCode/Claude AI configuration instead of local LLM config
 opencode_ai:
-  enabled: true  # Set to true to use OpenCode's configured AI provider/model
+  enabled: true  # Set to true to use OpenCode or Claude configured AI provider/model
   config_path: "~/.config/opencode/config.yaml"  # Path to OpenCode's config file
   # Recommended: remove or comment out local llm: section above when enabled
 
