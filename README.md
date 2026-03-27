@@ -10,7 +10,7 @@
 
 ## What is JARVIS?
 
-JARVIS is an autonomous AI employee that **continuously learns** from your OpenCode/Cursor conversations and file system, automatically generating professional sales engineering documents for every opportunity—zero manual effort required.
+JARVIS is an autonomous AI employee that **continuously learns** from your OpenCode/claude code conversations and file system, automatically generating professional sales engineering documents for every opportunity—zero manual effort required.
 
 ### ✨ Features
 
