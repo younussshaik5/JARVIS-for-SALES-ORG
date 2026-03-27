@@ -16,17 +16,18 @@ Copy the example configurations and update them with your local paths.
 - **Main Config**: `jarvis/config/jarvis.yaml`
 - **Observer Config**: `mcp-opencode-observer/config/mcp-observer.json`
 
-## 2. AI-Assisted Configuration (The "Magic" Way)
+## 2. AI-Assisted Configuration & Repair
 
-Instead of manual editing, you can ask your AI assistant (OpenCode or ClaudeCode) to handle the setup for you. Use the following prompts:
+Because this project has a complex architecture (Python and Node.js working together), if you find any "broken" files or startup errors, you can have your AI assistant fix them automatically.
 
 ### Prompt for ClaudeCode / OpenCode:
-> "I have just forked this JARVIS AI template. Please perform the following setup tasks:
-> 1. Detect my local OS and workspace paths.
-> 2. Update `mcp-opencode-observer/config/mcp-observer.json` to point to my local OpenCode/Claude conversation databases.
-> 3. Verify that the `dbPath` in the config exists on my machine.
-> 4. Check if I have `node` and `npm` installed, and run `npm install` in the `mcp-opencode-observer` directory if needed.
-> 5. Review `jarvis/config/jarvis.yaml` and prompt me for any missing API keys."
+> "I have just forked this JARVIS AI template. I am experiencing some issues [describe the issue]. 
+> 1. Please first **analyze the entire project architecture** to understand how the MCP Observer and JARVIS Core interact.
+> 2. Once you understand the system, perform the following setup:
+>    - Update `mcp-opencode-observer/config/mcp-observer.json` with my local paths.
+>    - Ensure the `dbPath` correctly points to my local OpenCode/Claude database.
+>    - Run `npm install` in the observer directory.
+>    - Fix any syntax or path errors you find to make the system fully functional."
 
 ## 3. Customizing Your Personas
 
