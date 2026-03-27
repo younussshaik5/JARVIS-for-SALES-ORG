@@ -15,7 +15,8 @@ export class LiveUpdateServer {
   }
 
   start(server: any): void {
-    this.wss = new (require('ws').WebSocketServer)({ server });
+    const wsModule = require('ws');
+    this.wss = new wsModule.WebSocketServer({ server });
 
     this.wss.on('connection', (ws: any) => {
       const client: WebSocketClient = {

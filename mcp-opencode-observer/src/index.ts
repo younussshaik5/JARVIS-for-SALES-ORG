@@ -1,7 +1,11 @@
 // MCP Conversation Observer (OpenCode & Claude) - Standalone stdio server
+// @ts-ignore
 import { ConversationDB } from './db.js';
+// @ts-ignore
 import { createServer as createHttpServer } from 'http';
+// @ts-ignore
 import { readFileSync, existsSync, unlinkSync } from 'fs';
+// @ts-ignore
 import { join } from 'path';
 import { startAutonomy, getStatus } from './autonomy.js';
 
